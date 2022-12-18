@@ -4,9 +4,25 @@ namespace Core_Project.Controllers
 {
     public class AdminController : Controller
     {
-        public IActionResult Index()
+        public PartialViewResult PartialSideBar()
         {
-            return View();
+            return PartialView();
+        }
+        public PartialViewResult PartialFooter()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PartialNavbar()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PartialHead()
+        {
+            return PartialView();
+        }
+        public PartialViewResult PartialScript()
+        {
+            return PartialView();
         }
     }
 }
