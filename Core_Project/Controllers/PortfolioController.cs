@@ -1,6 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using System.Windows.Markup;
 
@@ -9,6 +12,9 @@ namespace Core_Project.Controllers
     public class PortfolioController : Controller
     {
         PortfolioManager pm = new PortfolioManager(new EfPortfolioDal());
+
+        PortfolioValidator validations = new PortfolioValidator();
+        
         public IActionResult Index()
         {
             ViewBag.v1 = "Proje Listesi";
@@ -28,14 +34,27 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
-            pm.TAdd(portfolio);
-            return RedirectToAction("Index");
+            ValidationResult results = validations.Validate(portfolio);
+            if (results.IsValid)
+            {
+                pm.TAdd(portfolio);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach(var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
+            
         }
         public IActionResult DeletePortfolio(int id)
         {
             var values = pm.TGetByID(id);
             pm.TDelete(values);
-            return View("Index");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult EditPortfolio(int id)
@@ -46,8 +65,21 @@ namespace Core_Project.Controllers
         [HttpPost]
         public IActionResult EditPortfolio(Portfolio portfolio)
         {
-            pm.TUpdate(portfolio);
-            return RedirectToAction("Index") ;
+            ValidationResult results=validations.Validate(portfolio);
+            if (results.IsValid)
+            {
+                pm.TUpdate(portfolio);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach(var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
+       
         }
 
 

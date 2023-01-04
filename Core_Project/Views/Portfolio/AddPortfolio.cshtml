@@ -12,15 +12,27 @@
 
     @Html.Label("Proje Başlığı")
     @Html.TextBoxFor(x=>x.Name,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Name)
     <br />
     @Html.Label("Görsel 1")
     @Html.TextBoxFor(x=>x.ImageUrl,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ImageUrl)
     <br />
     @Html.Label("Görsel 2")
     @Html.TextBoxFor(x=>x.ImageUrl2,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ImageUrl2)
     <br />
     @Html.Label("Proje URL")
     @Html.TextBoxFor(x=>x.ProjectUrl,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.ProjectUrl)
+    <br />
+    @Html.Label("Fiyat")
+    @Html.TextBoxFor(x=>x.Price,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Price)
+    <br />
+    @Html.Label("Tamamlanma Oranı")
+    @Html.TextBoxFor(x=>x.Value,new{@class="form-control"})
+    @Html.ValidationMessageFor(x=>x.Value)
     <br />
 
     <button class="btn btn-success">Kaydet</button>
