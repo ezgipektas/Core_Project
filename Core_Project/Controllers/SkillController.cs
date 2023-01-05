@@ -11,7 +11,7 @@ namespace Core_Project.Controllers
         SkillManager sm = new SkillManager(new EfSkillDal());
         public IActionResult Index()
         {
-            ViewBag.v1 = "Yetenek Listesi";
+            
             ViewBag.v2 = "Yetenekler";
             ViewBag.v3 = "Yetenek Listesi";
             var values=sm.TGetList();

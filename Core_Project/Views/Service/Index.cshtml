@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
 }
 
 <div class="card-header border-0">
@@ -31,7 +31,7 @@
                         @item.Title
                     </th>
                     <td><a href="/Service/DeleteService/@item.ServiceID" class="btn btn-outline-danger">Sil</a></td>
-                    <td><a href="/Service/EditService/@item.ServiceID" class="btn btn-outline-dark">Güncelle</a></td>
+                    <td><a href="/Service/EditService/@item.ServiceID" class="btn btn-outline-warning">Güncelle</a></td>
                 </tr>
             }
 
