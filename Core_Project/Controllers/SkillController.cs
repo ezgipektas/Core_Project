@@ -35,7 +35,7 @@ namespace Core_Project.Controllers
         {
            var values= sm.TGetByID(id);
             sm.TDelete(values);
-            return View("Index");
+            return RedirectToAction("Index");
 
         }
         [HttpGet]

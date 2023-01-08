@@ -34,7 +34,7 @@ namespace Core_Project.Controllers
         {
             var values = em.TGetByID(id);
             em.TDelete(values);
-            return View("Index");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult EditExperience(int id)
