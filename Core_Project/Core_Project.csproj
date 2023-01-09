@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\bin\**" />
+    <Content Remove="wwwroot\bin\**" />
+    <EmbeddedResource Remove="wwwroot\bin\**" />
+    <None Remove="wwwroot\bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="wwwroot\corona-free-dark-bootstrap-admin-template-1.0.0\template\node_modules\node-gyp\lib\Find-VS2017.cs" />
   </ItemGroup>
 
@@ -19566,6 +19573,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Writer\Data\" />
+    <Folder Include="wwwroot\userimage\" />
     <Folder Include="wwwroot\skydash\.git\objects\info\" />
     <Folder Include="wwwroot\skydash\.git\objects\pack\" />
     <Folder Include="wwwroot\skydash\.git\refs\tags\" />
