@@ -16,19 +16,13 @@ namespace Core_Project.Controllers
         PortfolioValidator validations = new PortfolioValidator();
         
         public IActionResult Index()
-        {
-            ViewBag.v1 = "Proje Listesi";
-            ViewBag.v2 = "Projeler";
-            ViewBag.v3 = "Proje Listesi";
+        {           
             var values = pm.TGetList();
             return View(values);
         }
         [HttpGet]
         public IActionResult AddPortfolio()
-        {
-            ViewBag.v1 = "Proje Eklemei";
-            ViewBag.v2 = "Projeler";
-            ViewBag.v3 = "Proje Ekleme";
+        {           
             return View();
         }
         [HttpPost]

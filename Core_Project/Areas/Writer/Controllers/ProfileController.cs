@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace Core_Project.Areas.Writer.Controllers
 {
     [Area("Writer")]
+    [Route("Writer/[controller]/[action]")]
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
@@ -45,6 +46,7 @@ namespace Core_Project.Areas.Writer.Controllers
             }
             user.Name = p.Name;
             user.Surname=p.Surname;
+            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password); //Şifre güncelleme işlemi
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
