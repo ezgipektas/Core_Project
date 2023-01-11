@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace Core_Project.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DashboardController : Controller
     {
         public IActionResult Index()
         {
-            ViewBag.v1 = "Dashboard";
-            ViewBag.v2 = "İstatistikler";
-            ViewBag.v3 = "İstatistikler Sayfası";
+     
             return View();
         }
     }
